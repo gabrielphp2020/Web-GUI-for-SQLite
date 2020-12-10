@@ -63,6 +63,7 @@ class SQLiteWebJS {
 			return resultObject;
 		}
 	}
+
 	tables () {
 		if (!this.db) {
 			this.createDatabase();
@@ -1020,5 +1021,15 @@ class SQLiteWebJS {
 			self.closeMenu();
 			self.exportFile({data: self.myCodeMirror.getValue("\n"), filename: "file.sql", mime: 'text/plain'});
 		});
+		loadTest();
+		function loadTest(){
+		return		fetch("data.sqlite").then((r)=>r.blob()).then((data)=>{
+					self.loadStream(data);
+					self.loadDatabase(true);
+					self.resetMessage();
+					console.log('test loaded');
+			});
+				
+	}
 	}
 }
