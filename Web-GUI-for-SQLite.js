@@ -1004,6 +1004,26 @@ class SQLiteWebJS {
 				self.loadView(self.currentStructure.name);
 			}
 		});
+		document.getElementById("menu-sqlite-loadBDTest").addEventListener('click',function(e){
+			console.log('paso por aqui loadeder');
+			fetch("data.sqlite").then((r)=>r.blob()).then((dbTest)=>{
+				
+				self.resetMessage();
+				console.log('paso por aqui loadeding');
+					self.setMessage('SQLite-WebJS-editor-inprogress', "Your database is loading.");
+					setTimeout(function() {
+						 
+							document.getElementById('file-input').value = '';
+							self.loadStream(dbTest);
+							self.loadDatabase(true);
+							self.resetMessage();
+							self.setMessage('SQLite-WebJS-editor-valid', "Your database has been loaded.");
+							console.log('paso por aqui loaded');
+						
+					}, 1);
+				
+			});
+		});
 		
 		document.getElementById("menu-sqlite-openSQL").addEventListener('click', function(e) {
 			self.closeMenu();
@@ -1021,15 +1041,8 @@ class SQLiteWebJS {
 			self.closeMenu();
 			self.exportFile({data: self.myCodeMirror.getValue("\n"), filename: "file.sql", mime: 'text/plain'});
 		});
-		loadTest();
-		function loadTest(){
-		return		fetch("data.sqlite").then((r)=>r.blob()).then((data)=>{
-					self.loadStream(data);
-					self.loadDatabase(true);
-					self.resetMessage();
-					console.log('test loaded');
-			});
+
 				
 	}
-	}
+	
 }
