@@ -26,7 +26,7 @@ const SHELL = [
     "external/sql/sql.js",
 
     "image/error.png",
-    "image/minuts.png",
+    "image/minus.png",
     "image/plus.png",
     "image/preview.png",
     "image/update.png",
