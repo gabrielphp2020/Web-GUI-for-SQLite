@@ -14,6 +14,7 @@ const SHELL = [
     "index.html",
     "Web-GUI-for-SQLite.css",
     "Web-GUI-for-SQLite.js",
+    "data.sqlite",
 
     "external/a11y-dialog/a11y-dialog.js",
     "external/a11y-dialog/a11y-dialog.min.js",
