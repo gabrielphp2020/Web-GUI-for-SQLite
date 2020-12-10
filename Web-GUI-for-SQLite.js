@@ -1005,20 +1005,17 @@ class SQLiteWebJS {
 			}
 		});
 		document.getElementById("menu-sqlite-loadBDTest").addEventListener('click',function(e){
-			console.log('paso por aqui loadeder');
+			self.setMessage('SQLite-WebJS-editor-inprogress', "Database Test is loading.");
 			fetch("data.sqlite").then((r)=>r.blob()).then((dbTest)=>{
 				
 				self.resetMessage();
-				console.log('paso por aqui loadeding');
-					self.setMessage('SQLite-WebJS-editor-inprogress', "Your database is loading.");
-					setTimeout(function() {
+				setTimeout(function() {
 						 
-							document.getElementById('file-input').value = '';
 							self.loadStream(dbTest);
 							self.loadDatabase(true);
 							self.resetMessage();
-							self.setMessage('SQLite-WebJS-editor-valid', "Your database has been loaded.");
-							console.log('paso por aqui loaded');
+							self.setMessage('SQLite-WebJS-editor-valid', "Database Test has been loaded.");
+							
 						
 					}, 1);
 				
