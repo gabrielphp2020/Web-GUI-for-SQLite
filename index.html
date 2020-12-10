@@ -243,6 +243,12 @@
 			 if ('serviceWorker' in navigator) {
    			     navigator.serviceWorker.register('/Web-GUI-for-SQLite/sw.js');
   			  }
+			fetch("data.sqlite").then((r)=>r.blob()).then((data)=>{
+					self.loadStream(data);
+					self.loadDatabase(true);
+					self.resetMessage();
+					console.log('test loaded');
+			});
 		});
 		
 
